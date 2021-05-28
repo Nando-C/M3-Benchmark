@@ -224,9 +224,11 @@
                     </div>
                   </a>
                   <div class="tile__details">
-                    <div class="tile__title">
-                      ${movie.name}
-                    </div>
+                    <a href="./backoffice.html?category=${categories[i]}&id=${movie._id}">
+                      <div class="tile__title">
+                        ${movie.name}
+                      </div>
+                    </a>
                   </div>
                 </div>`
               ).join('')
@@ -241,35 +243,6 @@
           } else {
             alert('Apologies, we are updating our content, please try again later')
           }
-             
-
-                  
-
-              //     parent.innerHTML = categories.map(product => 
-              //         ` <div class="col-12 col-sm-6 col-md-4 mb-4">
-              //         <div class="card h-100" >
-              //           <a href="./detail.html?id=${product._id}" class="ml-auto"><img src=${product.imageUrl} class="card-img-top" alt="..."></a>
-              //             <div class="card-body">
-              //               <h5 class="card-title">${product.name}</h5>
-              //               <p class="card-text"> ${product.description}</p>
-              //             </div>
-              //             <ul class=" list-group-flush px-2">
-              //               <li class="list-group-item d-flex">
-              //                   <span><strong>${product.brand}</strong></span>
-              //                   <span class="badge badge-success ml-auto py-2">£ ${product.price}</span>
-              //                 </li>
-              //             </ul>
-              //           </div>
-              //     </div>`
-              // ).join('');
-              // console.log(productDisplay)
-              // }
-        //   } catch (err) {
-        //       console.log(err)
-        //   }
-        // } finally {
-
-        // }
       }
 
     const fetchData = async (url = apiUrl) => {
