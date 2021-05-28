@@ -76,7 +76,7 @@ body, .navbar{
     -o-object-fit: cover;
     object-fit: cover;
 }
-.ms-slider .tile__details {
+/* .ms-slider .tile__details {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -86,7 +86,7 @@ body, .navbar{
     opacity: 0;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
     transition: 450ms opacity;
-}
+} */
 .ms-slider .tile__details:after, .ms-slider .tile__details:before {
     content: "";
     position: absolute;
