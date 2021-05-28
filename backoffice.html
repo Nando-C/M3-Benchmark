@@ -203,7 +203,7 @@
 
     </div>
 
-
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
@@ -213,8 +213,8 @@
 
       const movieId = new URLSearchParams(window.location.search).get("id")
       const movieCategory = new URLSearchParams(window.location.search).get("category")
-      console.log(movieId)
-      console.log(movieCategory)
+      // console.log(movieId)
+      // console.log(movieCategory)
 
       const endPoint = movieId ? apiUrl + movieId : apiUrl
       const method = movieId ? "PUT" : "POST"
@@ -224,15 +224,16 @@
           document.getElementById("subtitle").innerText = `  —  Edit Movie Details`
           document.getElementById('delete-btn').classList.remove('d-none')
           try {
-            const response = await fetch(endPoint, {
+            const response = await fetch(apiUrl + movieCategory , {
               headers: {
                 "Authorization": `Bearer ${apiToken}`
               }
             })
-            console.log(endPoint)
-            const movieDetails = await response.json()
-            console.log(movieDetails)
-            populateForm(movieDetails)
+            const categoryArr = await response.json()
+            // console.log(categoryArr)
+            const movieToEdit = categoryArr.filter(movie => movie._id.includes(movieId))[0]
+            // console.log(movieToEdit)
+            populateForm(movieToEdit)
           } catch (error) {
             
           }
@@ -341,7 +342,7 @@
           
           if(response.ok) {
             alert (`Product deleted successfully`)
-            window.location.assign('./index.html')
+            window.location.assign('./home.html')
           } else {
             alert ('Something went wrong with the deletion process')
             if (response.status === 400) {
