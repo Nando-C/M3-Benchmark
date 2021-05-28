@@ -198,10 +198,11 @@
       window.onload = async () => {
           const parent = document.getElementById('content')
           const categories = await fetchData()
-          console.log(categories)
+          // console.log(categories)
           if(categories.length > 0) {
             for (let i=0; i < categories.length; i++) {
               const movies = await fetchData(apiUrl + categories[i])
+              console.log(movies)
 
               const section = document.createElement('section')
               section.classList.add('py-3')
@@ -216,9 +217,8 @@
               moviesContainer.classList.add('ms-slider__inner')
 
               moviesContainer.innerHTML = movies.map(movie =>
-                // console.log(movie.imageUrl)
                 `<div class="tile">
-                  <a href="./backoffice.html?id=${movie._id}">
+                  <a href="./backoffice.html?category=${categories[i]}&id=${movie._id}">
                     <div class="tile__media">
                       <img class="tile__img" src=${movie.imageUrl} alt=""  />
                     </div>
